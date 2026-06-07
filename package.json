@@ -1,0 +1,122 @@
+{
+  "name": "per-file-breakpoints",
+  "displayName": "Per-File Breakpoints",
+  "description": "Manage breakpoints in just the active editor.",
+  "icon": "./images/icon.png",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/geitir/vscode-per-file-breakpoints"
+  },
+  "bugs": {
+    "url": "https://github.com/geitir/vscode-per-file-breakpoints/issues"
+  },
+  "homepage": "https://github.com/geitir/vscode-per-file-breakpoints#readme",
+  "keywords": [
+    "breakpoints",
+    "debug",
+    "debugging",
+    "per-file",
+    "active file"
+  ],
+  "publisher": "geitir",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Debuggers"
+  ],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "perFileBreakpoints.disable",
+        "title": "Disable All Breakpoints on Active File"
+      },
+      {
+        "command": "perFileBreakpoints.enable",
+        "title": "Enable All Breakpoints on Active File"
+      },
+      {
+        "command": "perFileBreakpoints.remove",
+        "title": "Remove All Breakpoints on Active File"
+      },
+      {
+        "command": "perFileBreakpoints.toggle",
+        "title": "Toggle All Breakpoints on Active File"
+      },
+      {
+        "command": "perFileBreakpoints.disableExceptActiveFile",
+        "title": "Disable All Breakpoints Except Active File"
+      },
+      {
+        "command": "perFileBreakpoints.enableExceptActiveFile",
+        "title": "Enable All Breakpoints Except Active File"
+      },
+      {
+        "command": "perFileBreakpoints.removeExceptActiveFile",
+        "title": "Remove All Breakpoints Except Active File"
+      },
+      {
+        "command": "perFileBreakpoints.resetWelcome",
+        "title": "[PerFileBreakpoints] Reset Welcome Page (dev)"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "perFileBreakpoints.editorTitleMenu",
+        "label": "Per-File Breakpoints",
+        "icon": "$(activate-breakpoints)"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "perFileBreakpoints.resetWelcome",
+          "when": "perFileBreakpoints.devMode"
+        }
+      ],
+      "editor/title": [
+        {
+          "submenu": "perFileBreakpoints.editorTitleMenu",
+          "group": "navigation",
+          "when": "perFileBreakpoints.hasBreakpoints"
+        }
+      ],
+      "perFileBreakpoints.editorTitleMenu": [
+        {
+          "command": "perFileBreakpoints.toggle",
+          "group": "navigation@1"
+        },
+        {
+          "command": "perFileBreakpoints.disableExceptActiveFile",
+          "group": "navigation@2"
+        },
+        {
+          "command": "perFileBreakpoints.remove",
+          "group": "navigation@3"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "npm run check-types && node esbuild.js --production",
+    "check-types": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.75.0",
+    "esbuild": "^0.28.0",
+    "typescript": "^5.4.0"
+  },
+  "dependencies": {
+    "vscode-uri": "^3.1.0"
+  }
+}
