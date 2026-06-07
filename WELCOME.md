@@ -4,11 +4,11 @@ Enable, disable, or remove breakpoints scoped to the **active editor file** — 
 
 ## Status bar
 
-A `$(debug-breakpoint)N $(debug-breakpoint-unverified)N` item shows enabled/disabled breakpoint counts for the active file. Click it to open the action menu.
+A dedicated status bar shows enabled/disabled breakpoint counts for the active file as well as extension action results. Click it to open the action menu.
 
 ## Editor title button
 
-When the active file has breakpoints, a **Per-File Breakpoints** button (`$(activate-breakpoints)`) appears in the editor toolbar with quick actions: Toggle, Disable Except Active File, Remove.
+When the active file has breakpoints, a **Per-File Breakpoints** button appears in the editor toolbar with quick actions: Toggle, Disable Except Active File, Remove.
 
 ## Commands
 
